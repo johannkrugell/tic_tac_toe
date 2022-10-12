@@ -9,7 +9,7 @@ class Player
     @marker = marker
   end
 
-  def set_marker(new_marker)
+  def update_marker(new_marker)
     @marker = new_marker
   end
 end
