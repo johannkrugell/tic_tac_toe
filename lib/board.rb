@@ -3,29 +3,32 @@
 # class creating the board object
 class Board
   def initialize
-    @sqr1 = 1
-    @sqr2 = 2
-    @sqr3 = 3
-    @sqr4 = 4
-    @sqr5 = 5
-    @sqr6 = 6
-    @sqr7 = 7
-    @sqr8 = 8
-    @sqr9 = 9
+    @coordinates = {}
+    i = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    i.each do |number|
+      @coordinates[:"sqr#{number}"] = number
+    end
   end
 
-  def new_board
+  def board
     puts "
    ___ ___ ___
-  |   |   |   |
-  | #{@sqr1} | #{@sqr2} | #{@sqr3} |
+  | #{@coordinates[:sqr1]} | #{@coordinates[:sqr2]} | #{@coordinates[:sqr3]} |
   |___|___|___|
-  |   |   |   |
-  | #{@sqr4} | #{@sqr5} | #{@sqr6} |
+  | #{@coordinates[:sqr4]} | #{@coordinates[:sqr5]} | #{@coordinates[:sqr6]} |
   |___|___|___|
-  |   |   |   |
-  | #{@sqr7} | #{@sqr8} | #{@sqr9} |
+  | #{@coordinates[:sqr7]} | #{@coordinates[:sqr8]} | #{@coordinates[:sqr9]} |
   |___|___|___|
 "
+  end
+
+  def coordinates
+    p @coordinates
+  end
+
+  def update_board(coordinate_selected, player_marker)
+    @coordinates.each do |key, value|
+      @coordinates[key] = player_marker if value == coordinate_selected.to_i
+    end
   end
 end
