@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 # class creating the board object
-class Board
+class Board < Player
   def initialize
+    super(name, marker)
     @coordinates = {}
     i = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     i.each do |number|
@@ -29,6 +30,15 @@ class Board
   def update_board(coordinate_selected, player_marker)
     @coordinates.each do |key, value|
       @coordinates[key] = player_marker if value == coordinate_selected.to_i
+    end
+  end
+
+  def board_result
+    a = ['sqr[1,2,3]', 'sqr[4,5,6]', 'sqr[7,8,9]', 'sqr[1,4,7]', 'sqr[2,5,8]',
+         'sqr[3,6,9]', 'sqr[1,5,9]', 'sqr[3,5,7]']
+    a.each do |selection|
+      row1 = @coordinates.select { |key| key.to_s.match(selection) }
+      return true if row1.values.to_a.uniq.length <= 1
     end
   end
 end
