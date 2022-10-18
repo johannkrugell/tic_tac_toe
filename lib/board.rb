@@ -2,6 +2,8 @@
 
 # class creating the board object
 class Board < Player
+  attr_reader :coordinates
+
   def initialize
     super(name, marker)
     @coordinates = {}
@@ -20,11 +22,8 @@ class Board < Player
   |___|___|___|
   | #{@coordinates[:sqr7]} | #{@coordinates[:sqr8]} | #{@coordinates[:sqr9]} |
   |___|___|___|
-"
-  end
 
-  def coordinates
-    p @coordinates
+"
   end
 
   def update_board(coordinate_selected, player_marker)
