@@ -13,5 +13,4 @@ game.title
 Player.players_details
 
 # Play new Game
-game = Game.new
 game.play_game
